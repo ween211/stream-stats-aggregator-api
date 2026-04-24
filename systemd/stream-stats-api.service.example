@@ -1,0 +1,15 @@
+[Unit]
+Description=Stream Stats Aggregator API
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/stream-stats-aggregator-api
+EnvironmentFile=/opt/stream-stats-aggregator-api/.env
+ExecStart=/opt/stream-stats-aggregator-api/.venv/bin/uvicorn app:app --host 127.0.0.1 --port 8080
+Restart=always
+RestartSec=5
+User=www-data
+Group=www-data
+
+[Install]
+WantedBy=multi-user.target
